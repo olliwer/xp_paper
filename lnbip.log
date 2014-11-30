@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.25)  25 NOV 2014 20:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.25)  30 NOV 2014 19:15
 entering extended mode
 **lnbip
 (c:\Users\Noemj\workspace\paper\lnbip.tex
@@ -186,95 +186,117 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 46.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 46.
- [1
+
+
+LaTeX Warning: Citation `cockburn2002agile' on page 1 undefined on input line 5
+9.
+
+
+LaTeX Warning: Citation `dzamashvili2010impact' on page 1 undefined on input li
+ne 59.
+
+
+LaTeX Warning: Citation `duvall2007continuous' on page 1 undefined on input lin
+e 61.
+
+[1
 
 
 
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 61--66
+
+LaTeX Warning: Citation `neely2013continuous' on page 2 undefined on input line
+ 63.
+
+
+LaTeX Warning: Citation `loshin2010master' on page 2 undefined on input line 65
+.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
 
  []
-
-
-LaTeX Warning: Citation `ep' on page 2 undefined on input line 97.
 
 [2]
 
-LaTeX Warning: Citation `runeson2009guidelines' on page 3 undefined on input li
-ne 106.
+LaTeX Warning: Citation `ep' on page 3 undefined on input line 105.
 
 
 LaTeX Warning: Citation `runeson2009guidelines' on page 3 undefined on input li
-ne 109.
+ne 114.
+
+[3]
+
+LaTeX Warning: Citation `runeson2009guidelines' on page 4 undefined on input li
+ne 117.
 
 
-LaTeX Warning: Citation `king1998template' on page 3 undefined on input line 11
-2.
+LaTeX Warning: Citation `king1998template' on page 4 undefined on input line 12
+0.
 
-[3] [4] [5]
+[4] [5] [6]
 
-LaTeX Warning: Citation `cdbook' on page 6 undefined on input line 241.
-
-[6]
-
-LaTeX Warning: Citation `cdbook' on page 7 undefined on input line 250.
+LaTeX Warning: Citation `cdbook' on page 7 undefined on input line 249.
 
 
-LaTeX Warning: Citation `bosch2012building' on page 7 undefined on input line 2
-56.
+LaTeX Warning: Citation `cdbook' on page 7 undefined on input line 258.
 
 [7]
 
-LaTeX Warning: Citation `neely2013continuous' on page 8 undefined on input line
- 263.
+LaTeX Warning: Citation `bosch2012building' on page 8 undefined on input line 2
+64.
 
-[8] [9]
+
+LaTeX Warning: Citation `neely2013continuous' on page 8 undefined on input line
+ 271.
+
+[8] [9] [10]
 ! Undefined control sequence.
-l.368   \includegraphics
+l.376   \includegraphics
                         [width=5.0in]{cd_challenges.jpeg}
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.368   \includegraphics[width=5.0in]{cd_
+l.376   \includegraphics[width=5.0in]{cd_
                                          challenges.jpeg}
 ? 
 ! Extra }, or forgotten $.
-l.368 ...graphics[width=5.0in]{cd_challenges.jpeg}
+l.376 ...graphics[width=5.0in]{cd_challenges.jpeg}
                                                   
 ? 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.369 ...any's challenges in continuous delivery.}
+l.377 ...any's challenges in continuous delivery.}
                                                   
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.371 \end{figure}
+l.379 \end{figure}
                   
 ? 
 
-LaTeX Warning: Reference `fig8' on page 10 undefined on input line 373.
-
-[10]
-
-LaTeX Warning: Citation `olsson2012climbing' on page 11 undefined on input line
- 376.
+LaTeX Warning: Reference `fig8' on page 11 undefined on input line 381.
 
 
 LaTeX Warning: Citation `olsson2012climbing' on page 11 undefined on input line
- 389.
+ 384.
 
-[11] [12]
+[11]
+
+LaTeX Warning: Citation `olsson2012climbing' on page 12 undefined on input line
+ 397.
+
+[12] [13]
 
 ! LaTeX Error: Float(s) lost.
 
@@ -282,7 +304,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.426 \end{document}
+l.434 \end{document}
                     
 ? 
 (c:\Users\Noemj\workspace\paper\lnbip.aux)
@@ -291,13 +313,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 920 strings out of 493921
- 10494 string characters out of 3147281
- 72585 words of memory out of 3000000
- 4270 multiletter control sequences out of 15000+200000
+ 924 strings out of 493921
+ 10576 string characters out of 3147281
+ 73585 words of memory out of 3000000
+ 4274 multiletter control sequences out of 15000+200000
  7802 words of font info for 28 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,21p,2507b,339s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,9n,21p,1838b,339s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTe
@@ -306,9 +328,9 @@ ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmtt9.pfb>
-Output written on lnbip.pdf (12 pages, 155755 bytes).
+Output written on lnbip.pdf (13 pages, 157341 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
