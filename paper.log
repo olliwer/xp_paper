@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.25)  7 DEC 2014 23:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.25)  16 FEB 2015 18:15
 entering extended mode
 **paper
 (c:\Users\Noemj\workspace\paper\paper.tex
@@ -155,9 +155,6 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 732.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 \svitemindent=\dimen132
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\makeidx.sty"
-Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
-)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -190,21 +187,24 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen133
 \Gin@req@width=\dimen134
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\makeidx.sty"
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
 \mybox=\box54
 
 (c:\Users\Noemj\workspace\paper\paper.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
@@ -225,13 +225,13 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \everyMPtoPDFconversion=\toks20
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 51.
+(Font)              <7> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 51.
+(Font)              <5> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 51.
+(Font)              <9> on input line 45.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 51.
+(Font)              <6> on input line 45.
  [1
 
 
@@ -243,12 +243,12 @@ Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--109
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
@@ -256,10 +256,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--109
 File: cd_challenges.jpeg Graphic file (type jpg)
 
 <use cd_challenges.jpeg>
-Package pdftex.def Info: cd_challenges.jpeg used on input line 391.
+Package pdftex.def Info: cd_challenges.jpeg used on input line 203.
 (pdftex.def)             Requested size: 361.34999pt x 394.8386pt.
 
-Overfull \hbox (14.22646pt too wide) in paragraph at lines 391--392
+Overfull \hbox (14.22646pt too wide) in paragraph at lines 203--204
  [][] 
  []
 
@@ -274,13 +274,13 @@ Missing character: There is no ê in font cmr9!
  [12]
 (c:\Users\Noemj\workspace\paper\paper.aux) ) 
 Here is how much of TeX's memory you used:
- 1814 strings out of 493921
- 22749 string characters out of 3147281
- 88299 words of memory out of 3000000
- 5132 multiletter control sequences out of 15000+200000
+ 1815 strings out of 493921
+ 22715 string characters out of 3147281
+ 87296 words of memory out of 3000000
+ 5133 multiletter control sequences out of 15000+200000
  7456 words of font info for 27 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,21p,1419b,295s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,9n,21p,1487b,295s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
@@ -290,7 +290,7 @@ cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb
 am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on paper.pdf (12 pages, 1871628 bytes).
+Output written on paper.pdf (12 pages, 1871705 bytes).
 PDF statistics:
  78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

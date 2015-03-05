@@ -4,13 +4,10 @@
 % version 1.0 for LaTeX2e
 %
 \documentclass[lnbip]{svmultln}
-%
-\usepackage{makeidx}  % allows for indexgeneration
 \usepackage{graphicx}
+\usepackage{makeidx}  % allows for indexgeneration
 %\usepackage{graphics} 
 % \makeindex          % be prepared for an author index
-
-
 
 \def\signed#1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
   \hbox{}\nobreak\hfil\raise-3pt\hbox{(#1)}%
@@ -27,15 +24,12 @@
 %
 \title{Transitioning Towards Continuous Delivery in the B2B Domain: A Case Study}
 %
-%TODO: check this
-\titlerunning{Continuous Delivery in B2B Domain}  % abbreviated title (for running head)
+\titlerunning{Continuous Delivery in the B2B Domain}  % abbreviated title (for running head)
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
 \author{Olli Rissanen \inst{1,2}, J{\"u}rgen M{\"u}nch \inst{1}
-%Jeffrey Dean \and David Grove \and Craig Chambers \and Kim~B.~Bruce \and
 }
-%TODO: check this
 \authorrunning{Olli Rissanen}   % abbreviated author list (for running head)
 %
 %%%% list of authors for the TOC (use if author list has to be modified)
@@ -53,79 +47,44 @@ Steeri Oy, Tammasaarenkatu 5, 00180 Helsinki, Finland
 % \index{Temam, Roger}  % of the whole volume
 % \index{Dean, Jeffrey}
 
-\begin{abstract}        % give a summary of your study
+\begin{abstract}        
 Delivering value to customers in real-time requires companies to utilize real-time deployment of software to expose features to users faster, and to shorten the feedback loop. This allows for faster reaction and helps to ensure that the development is focused on features providing real value. Continuous delivery is a development practice where the software functionality is deployed continuously to customer environment. Although this practice has been established in some domains such as B2C mobile software, the B2B domain imposes specific challenges. This article presents a case study that is conducted in a medium-sized software company operating in the B2B domain. The objective of this study is to analyze the challenges and benefits of continuous delivery in this domain. The results suggest that technical challenges are only one part of the challenges a company encounters in this transition. The company must also address challenges related to the customer and procedures. The core challenges are caused by having multiple customers with diverse environments and unique properties, whose business depends on the software product. Some customers require to perform manual acceptance testing, while some are reluctant towards new versions. By utilizing continuous delivery, it is possible for the case company to shorten the feedback cycles, increase the reliability of new versions, and reduce the amount of resources required for deploying and testing new releases.
 
-%s such as long feedback cycles, low reliability in new versions and high amount of resources required for releases. 
-
-%                         please supply keywords within your abstract
 \keywords {Continuous Delivery, Continuous Deployment, Development Process, B2B, Case Study}
 \end{abstract}
 %
 \section{Introduction}
-To deliver value fast and to cope with the increasingly active business environment, companies have to find solutions that improve efficiency and speed. Agile practices \cite{cockburn2002agile} have increased the ability of software companies to cope with changing customer requirements and changing market needs \cite{dzamashvili2010impact}. To even further increase the efficiency, shortening the feedback cycle enables faster customer feedback. Continuous delivery is a design practice that aims to shorten the delivery cycles by automating the deployment process and frequently deploying the software to customer environment. In continuous delivery, the software is developed in a way that it is always ready for releasing. %While continuous integration defines a process where the work is automatically built, tested and frequently integrated to mainline \cite{duvall2007continuous}, continuous delivery adds automated acceptance testing and automated deployment. 
+To deliver value fast and to cope with the increasingly active business environment, companies have to find solutions that improve efficiency and speed. Agile practices \cite{cockburn2002agile} have increased the ability of software companies to cope with changing customer requirements and changing market needs \cite{dzamashvili2010impact}. To even further increase the efficiency, shortening the feedback cycle enables faster customer feedback. Continuous delivery is a design practice that aims to shorten the delivery cycles by developing software in a way that it is always ready for releasing.
 
-This study is an exploratory case study, which explores how continuous delivery can be applied in the case company that operates in the B2B domain. While existing studies of applying the design practice exist \cite{olsson2012climbing, neely2013continuous}, none of the studies focuses specifically in the B2B domain. This study specifically aims to identify the main requirements, problems and key success factors with regards to continuous delivery in this domain. Extending the development process towards continuous delivery requires a deep analysis of the current development and deployment process, seeking the current problems and strengths. Adopting continuous delivery also requires understanding the requirements of continuous delivery, and restrictions caused by the developed software products. 
+This study is an exploratory case study, which explores how continuous delivery can be applied in the case company that operates in the B2B domain. While existing studies of applying the practice exist \cite{olsson2012climbing, neely2013continuous}, none of the studies focuses specifically in the B2B domain. This study specifically aims to identify the main requirements, problems and key success factors with regards to continuous delivery in this domain. Extending the development process towards continuous delivery requires a deep analysis of the current development and deployment process, seeking the current problems and strengths. Adopting continuous delivery also requires understanding the requirements of continuous delivery, and restrictions caused by the developed software products. 
 
 This study is organized as follows. The second chapter summarizes the relevant literature and theories to position the research and to educate the reader on the body of knowledge and where the contributions are intended. The third chapter presents the research design. The findings are then presented in the fourth chapter, organized according to the research questions. The fifth chapter interprets the main results, and discusses the limitations of the study. Finally, the sixth chapter summarizes the results of study and answers to the research question, discusses the limitations of the study and introduces further research avenues.
 
 \section{Background and Related Work}
-In an agile process software release is done in periodic intervals \cite{cockburn2002agile}. Compared to waterfall model it introduces multiple releases throughout the development. Continuous delivery, on the other hand, attempts to keep the software ready for release at all times during development process \cite{cdbook}. Continuous delivery is an extension to continuous integration, where the software functionality is deployed frequently at customer environment. While continuous integration defines a process where the work is automatically built, tested and frequently integrated to mainline \cite{duvall2007continuous}, often multiple times a day, continuous delivery adds automated acceptance testing and deployment to a staging environment. The purpose of continuous delivery is that as the deployment process is automated, it reduces human error, documents required for the build and increases confidence that the build works \cite{cdbook}. It therefore aims to solve the problem of how to deliver an idea to users as quickly as possible.
+In the agile process software release is done in periodic intervals \cite{cockburn2002agile}. Compared to waterfall model it introduces multiple releases throughout the development. Continuous delivery, on the other hand, attempts to keep the software ready for release at all times during development process \cite{cdbook}. Continuous delivery is an extension to continuous integration, where the software functionality is kept in a state where it can be deployed to production immediately. Production deployments are manually triggered, but the entire deployment process is otherwise automated. While continuous integration defines a process where the work is automatically built, tested and frequently integrated to mainline \cite{duvall2007continuous}, often multiple times a day, continuous delivery adds automated acceptance testing and deployment to a staging environment. The purpose of continuous delivery is that as the deployment process is automated, it reduces human error and documents required for the build, and increases confidence that the build works \cite{cdbook}. It therefore aims to solve the problem of how to deliver an idea to users as quickly as possible.
 
-%release cycles
- %Instead of stopping the development process and creating a build as in an agile process, the software is continuously deployed to customer environment. This doesn't mean that the development cycles in continuous delivery are shorter, but that the development is done in a way that makes the software always ready for release.
+Continuous delivery differs from continuous deployment. Continuous deployment means that every change goes through the pipeline and automatically gets put into production, resulting in many production deployments every day. Continuous delivery just means that you are able to do frequent deployments but may choose not to do it, usually due to businesses preferring a slower rate of deployment \cite{fowler}. An essential part of continuous delivery is the deployment pipeline, which is an automated implementation of an application’s build, deploy, test and release process \cite{humble2006deployment}. A deployment pipeline can be loosely defined as a consecutively executed set of validations that a software has to pass before it can be released. Common components of the deployment pipeline are a version control system and an automated test suite.
 
-%\begin{figure}
-% use the \includegraphics command from the graphics package
-% (N.B. put \usepackage{graphics} into your preamble then)
-% for inclusion of your images. A sample call could read:
-% \includegraphics{myimage}
-%\vspace{2.5cm}
-%\caption{This is the caption of the figure displaying a white eagle and
-%a white horse on a snow field}
-%\end{figure}
-%delivery vs deployment
-Continuous delivery differs from continuous deployment. Both continuous delivery and continuous deployment include automatic deployment to a staging environment. Continuous deployment includes deployment to a production environment, while in continuous delivery the deployment to a production environment is done manually. The purpose of continuous delivery is to prove that every build is deployable \cite{cdbook}. An essential part of continuous delivery is the deployment pipeline, which is an automated implementation of an application’s build, deploy, test and release process \cite{humble2006deployment}. A deployment pipeline can be loosely defined as a consecutively executed set of validations that a software has to pass before it can be released. Common components of the deployment pipeline are a version control system and an automated test suite. Humble and Farley define the deployment pipeline as a set of stages, which cover the path from the commit stage to a build.
-
-%Barriers in CI->CD transition: stairway
-Challenges in adopting continuous delivery have been researched in multiple studies. Olsson et al. investigate the organization evolution path and the transition phase from continuous integration to continuous delivery \cite{olsson2012climbing}.  The authors define continuous delivery as one of the final steps in the organization evolution path. The authors identify barriers that companies need to overcome to achieve the transition. One such barrier is the custom configuration at customer sites. Maintaining customized solutions and local configurations alongside the standard configurations creates issues. The second barrier is the internal verification loop, that has to be shortened not only to develop features faster but also to deploy fast. Finally, the lack of transparency and getting an overview of the status of development projects is seen as a barrier.
+Challenges in adopting continuous delivery have been researched in multiple studies. Olsson et al. investigate the organization evolution path and the transition phase from continuous integration to continuous delivery \cite{olsson2012climbing}. The authors define continuous delivery as one of the final steps in the organization evolution path. The authors identify barriers that companies need to overcome to achieve the transition. One such barrier is the custom configuration at customer sites. Maintaining customized solutions and local configurations alongside the standard configurations creates issues. The second barrier is the internal verification loop, that has to be shortened not only to develop features faster but also to deploy fast. Finally, the lack of transparency and getting an overview of the status of development projects is seen as a barrier.
 
 One of the largest technical challenges is the test automation required for rapid deployment \cite{cdbook, humble2006deployment}. Neely and Stolt found out that with a continuous flow, Sales and Marketing departments lost the track of when features are released \cite{neely2013continuous}. Implementing the deployment infrastructure also requires knowledge from the development and operations team \cite{humble2006deployment}. Another challenge is to sell the vision and reasoning behind continuous delivery to the executive and management level \cite{neely2013continuous}.
-
-%The practice of deploying versions continuously allows for faster customer feedback, ability to learn from customer usage data and to focus on features that produce real value for the customer \cite{olsson2012climbing}. Olsson et al. state that in order to shorten the internal verification loop, different parts in the organization should also be involved, especially the product management as they are the interface to the customer \cite{olsson2012climbing}. They also note that finding a pro-active lead customer is essential to explore and form a new engagement model.
 
 \section{Case study}
 To provide insight into extending the development process towards continuous delivery, the following research questions have been chosen: \newline
 
-%The purpose of this study is to seek ways to improve the product development process of two software products of the case company in the B2B domain by utilizing continuous delivery. This includes analysing the challenges and benefits of this practice. Existing documented implementations of continuous delivery are primarily executed in the B2C domain, often with a Software as a Service (SaaS) product. The focus of this study is in the B2B domain, with two software products that are not used as SaaS and are developed directly to other companies acting as customers. The characteristics of this domain are typically longer release cycles and customer owned environments.
-
 \noindent \textbf{RQ1: What are the B2B specific challenges of continuous delivery?}
 
-\noindent Software development practices and product characteristics vary based on the domain and delivery model. Typical B2C applications are hosted as Software as a Service (SaaS) applications, and accessed by users via a web browser. In the B2B domain, applications installed to customer environments are very common. The purpose of this research question is to identify the challenges faced in applying continuous delivery in the B2B environment. The research question is answered by conducting interviews to discover the current development process and its challenges in the case company, and using these findings and the available literature on continuous delivery to map the initial set of challenges these approaches will encounter in the case company. The available literature is used to provide a thorough understanding of continuous delivery as a whole, so that challenges can be identified in all aspects of the practice.
-%Question: contractual issues? 
-%Question: selecting the correct OEC in b2b is harder. for example revenue. 
-%question: in B2C people develop their own product, but in B2B the feature ideas might come only from customer.
-\newline
+\noindent Software development practices and product characteristics vary based on the domain and delivery model. Typical B2C applications are hosted as Software as a Service (SaaS) applications, and accessed by users via a web browser. In the B2B domain, applications installed to customer environments are very common. The purpose of this research question is to identify the challenges faced in applying continuous delivery in the B2B environment. The research question is answered by conducting interviews to discover the current development process and its challenges in the case company, and using these findings and the available literature on continuous delivery to map the initial set of challenges these approaches will encounter in the case company. The available literature is used to provide a thorough understanding of continuous delivery as a whole, so that challenges can be identified in all aspects of the practice.\newline
 
-%collect ideas from literature review and interview
-%\noindent \textbf{RQ 2: How to collect usage data and customer feedback in B2B domain, where user amounts can be very low?}
-
-%\noindent Research question 4 is answered by analysing the usage data and customer feedback collection of the case company. This is carried out by interviewing the key persons responsible for customer interaction and developers responsible for usage data collection.  
-
-%As compared to the B2C domain where the product is often deployed in cloud with a lot of users, B2B applications might only have a handful of users. This question %is answered by collecting ideas from the literature review and interview results. \newline
-%-Legal issues
-%-Technical issues
-
-%Interview results have to be compared to literature review results
 \noindent \textbf{RQ2: How does continuous delivery benefit the case company?} %What are the problems and strengths of the current development process?
 
 \noindent To rationalize the decision to adopt continuous delivery in a company, the actual benefits to the business have to be identified. This research question aims to identify clear objectives for what is achieved by adopting continuous delivery. Sections of the interview aim to identify the current perceived problems of the case company related to deployment, product development, collecting feedback and guiding the development process. These problems are then compared to the benefits of the approach found from the literature.
 
 \subsubsection{Research design}
-In this research, the units under the study are two teams within the case company, and the two software products developed by these teams. By focusing on two different products, a broader view on the application and consequences of the development approach can be gained. The first product, a marketing automation, is used through an extensive user interface. The second product under inspection is a Master Data Management \cite{loshin2010master} solution running as an integrated background application. 
+In this research, the units under the study are two teams within the case company, and the two software products developed by these teams. By focusing on two different products, a broader view on the application and consequences of the development approach can be gained. The first product, a marketing automation called Dialog, is used through an extensive user interface. The second product under inspection is a Master Data Management \cite{loshin2010master} solution running as an integrated background application. 
 
 %Methods
-The primary source of information in this research are semi-structured interviews \cite{runeson2009guidelines}, performed within the two teams under study. The interview consists of pre-defined themes focusing on current development process, current deployment process, current interaction with customers, the software products and future ways with continuous delivery. Data is also collected through the product description documents and development process documents to verifying and supplementing the interview data. Data triangulation is implemented by interviewing multiple individuals in different positions of the teams. Methodological triangulation is implemented by collecting documentary data regarding the development process from internal documents, and by including observations made by the author in the analysis. 
+The primary source of information in this research are semi-structured interviews \cite{runeson2009guidelines}, performed within the two teams under study. The interview consists of pre-defined themes focusing on current development process, current deployment process, current interaction with customers, the software products and future ways with continuous delivery. Data is also collected through the product description documents and development process documents to verifying and supplementing the interview data. 
 
 %Data collection
 The interview is a semi-structured interview with a standardized set of open-ended questions, which allows deep exploration of studied objects \cite{runeson2009guidelines}. The interviews are performed once with every interviewee. There are a total of 12 interviewees: 6 in each team. The interviewees in the first team consist of 5 software designers and one team leader. In the second team, the interviewees consist of 3 software designers, a quality assurance engineer, a manager for commercialization and a team leader. Leading questions are avoided on purpose, and different probing techniques such as "What?"-questions are used. The interviews are performed in the native language of the interviewee if possible, otherwise in English, and are recorded in audio format. The audio files are then transcribed into text.
@@ -134,10 +93,7 @@ The interview is a semi-structured interview with a standardized set of open-end
 The data analysis is based on template analysis, which is a way of thematically analysing qualitative data \cite{king1998template}. The initial template was first formed by exploring the qualitative data for two themes: development process and deployment of software. Through multiple iterations of the data, multiple subthemes were then added to the two existing themes by further coding the data. Attention was paid to different roles of the interviewees.
 
 \section{Results}
-
-%When to use CD: http://www.continuousagile.com/unblock/cd_costs_benefits.html
-%You provide an online service: Web, SaaS, PaaS, online gaming, online big data, or mobile apps with Web service back ends. If you provide online services, you need to move to continuous delivery, or your competitors will race ahead of you.
-This section is structured according to the research questions. The challenges regarding continuous delivery are analyzed in three areas: technical, procedural and customer. Technical aspect includes the environmental challenges, configural challenges and other challenges related to the software product and its usage. Procedural aspect includes the challenges regarding the development process of software. Customer aspect consists of the customer interaction process and customer commitment.
+This section is structured according to the research questions. The challenges regarding continuous delivery are analyzed in three areas: technical, procedural and customer. Technical aspect includes the environmental challenges, configural challenges and other challenges related to the software product and its usage. Procedural aspect includes the challenges regarding the software development process. Customer aspect consists of the customer interaction process and customer commitment.
 
 \subsection{Technical challenges}
 The technical challenges for continuous delivery are derived from the interviews. A part of the interview focuses on the current deployment process and customer interaction of the case company. The current deployment process, customer interaction and challenges related to them are then used as a basis for analysing challenges that influence continuous delivery. 
@@ -159,66 +115,11 @@ The technical challenges for continuous delivery are derived from the interviews
 
 Downtime of the case company's products can be fatal. According to the Dialog product owner, downtime causes end-users being unable to perform their job. Downtime can also interrupt ongoing customer tasks, possibly losing critical data in the progress. Currently the deployment time for both projects is negotiated with the customer to prevent these cases, and the version deployments are done when the system can be closed for a short period of time. 
 
-%-testing costs could be pushed at least partially to users
-The developers perceive automated testing and test environments to be the largest technical task. The developers state that building a sufficient test automation is a very laborious process especially due to the maturity of the software, and are concerned with the maintainability of the test suite. The management is not sure what to test with automatic acceptance testing to validate that a version is valid. 
+The developers perceive automated testing and test environments to be the largest technical task. The developers state that building a sufficient test automation is a very laborious process especially due to the maturity of the software, and are concerned with the maintainability of the test suite. The management is not sure what to test with automatic acceptance testing to validate a version. 
 
 Both of the case company's software products are integrated to various third party applications and APIs. Changes to the interfaces communicating with these applications must be planned and discussed in advance. Based on the interview results, automatically updating the integrations requires an unduly amount of work considering the results. 
 
-%External components
 It is also common for B2B applications to have external components that have to be configured when the software is installed or the APIs to these components changed. The configurations for these external components either have to be manually updated, or automated as well. One of the main differences between B2B and B2C domains is the production environment. Both of the case company's products are used in multiple different customer environments. This introduces a problem of managing different configurations per customer environment and software instance.
-%Different configuration per customer
-
-
-
- %This introduces a problem of managing different configurations per customer environment and software instance. While companies operating in the B2C domain often own the production environment, in B2B domain it is common to install the software on customer environment. The customer owned environment introduces multiple challenges: accessing the environment, transferring the software product to the environment and integrating the software to other components within the environment. The challenges related to transferring the software include firewall configurations, required certifications and user rights. The customers also have to be informed on actions performed in their servers. For certain environments, a VPN connections is required. A VPN connection often has a user limit, which can prevent automatic version deployment.
-
-%According to Jan Bosch, "In an IES environment, there is only one version: the currently deployed one. All other versions have been retired and play no role." \cite{bosch2012building}". 
-
-
-%Database versioning
-%database needs to be versioned
-
-%Firewall configurations
-%Required certifications
-%Missing user rights
-%VPN user limit
-%Environment
-
-%-automate testing
-%Continuous delivery requires you to set up and administer automated testing. You will need to write automated tests, and you will need to automate the configuration of test environments. In our experience, automating testing takes more time and effort than any other aspect of a continuous delivery rollout.
-
-%-testing costs could be pushed at least partially to users
-%In an experimental product, you can push some of the costs of testing onto users. We'll talk about this option when we cover testing and product management.
-
-
-%Tällä hetkellä tiimin resurssit eivät riitä sen toteutukseen. Asiakkaiden pitää ymmärtää mistä on kyse. Asiakkailta pitää saada tähän lupa / sopimus. Tällä hetkellä tekninen haaste eniten on tietokannan versiointi johon on olemassa ratkaisuja. Integraatioiden automaattinen päivittäminen vaatisi ehkä kohtuuttoman paljon resursseja suhteessa siihen mitä saavutetaan. Itse dialogin päivitysten automatisointi olisi tehtävissä helpoiten. Yleinen smoketestaus olisi tehtävissä, mutta vaatii että testit kirjoitetaan, pitäisi tehdä paljon, ja niitä pitäisi ylläpitää. Tällä hetkellä tähän ei ole resursseja.  Ei voida siirtää aina uutta versiota, koska pitää pystyä takaamaan isolla varmuudella että asiat toimivat. Käytännössä se että sovitaan asiakkaan kanssa että vaihdetaan versio, ja tällöin laukastausiin automaattinen tuotantoonsiirto, olisi toimiva ratkaisu. 
-
-
-%External components have to be configured
-%Useampi asia joka pitää laittaa käyttöön, OpenAM, DJ jne. Jos yksikin unohtuu laittaa käyntiin, jotkin tuotteen palvelut eivät toimi. (Ulkoiset komponentit) SaaS-tuotteena herokussa ei ole ongelmaa. 
-
-%Database versioning
-
-
-%Different configurations per customer
-
-
-%Firewall configuratiosn
-
-%In the IT-departments, customers have to be informed on actions in their servers. There might be firewall configurations, required certifications and missing %rights. 
-%Required certifications
-%Missing rights
-%VPN user limit
-%siirto voi olla haaste, sillä ympäristöt ovat asiakkaiden hallussa. yhteyden saaminen esim. windows-koneille vaatii VPN:n, eikä se ole aina yksinkertaista. esimerkiksi VPN:n käyttäjälimitit asiakkaille voivat olla täynnä.
-
-%Integrating the software to third-party components
-
-%Downtime
-
-  %IT-puolelle täytyy ehkä ilmoitella mitä tapahtuu, tai pyytää heitä tekemään asioita mihin meillä ei ole oikeuksia. Saattaa olla palomuurikonffeja joita pitää säätää, tai toimittaa meille jotain sertifikaatteja. 
-
-
-%(CDM) -Downtime -ei ihmiskäyttäjiä, olisi ihan tehtävissä. UAT:kin on, jengi varaa resurssit testaamiseen, en tiedä onko kykyä tehdä kaksi versiota ja deployata ne tuotantoon. jos asiakkaan testaajien pitää kerran viikossa mennä UAT:hen testaamaan uutta versiota, söisi se niiltä paljon resursseja. Ei uusi versio kuitenkaan huono tilanne ole, ei heidän välttämättä tarvitsisi sitä testata. UAT on käytännössä pakollinen ennen tuotantoa, Sanomilla on sitä testattu ja se on CDM:n kanssa varsin haastavaa kun pitäisi tietää mitä tulisi eksakstisti takaisin. pitää pelata ulkositen palvelijoiden (VTJ) pelisäännöillä kun ei voida tietää mitä palautuu. yhdellä datasetillä testaaminen on vähän turhaa, kun yhden datasetin toimiminen ei kerro meille käytännössä mitään.  Ei tietoa teknisistä haasteista.
 
 \subsection{Procedural challenges}
 The procedural challenges are analyzed based on the development process documentations of the company and the interviews. In the interviews, a section is dedicated to the current development process of the case company. The development process and its challenges are then used to analyse and identify challenges that influence continuous delivery.
@@ -239,68 +140,22 @@ The procedural challenges are analyzed based on the development process document
     \caption{Procedural challenges in continuous delivery.}
     \end{table}
 
-%UAT
-%-UAT is often the norm and is required before anything is moved to production
-%-in B2B, continuous deployment straight to production is very risky
-The basic deployment pipeline in the case company first includes a deploy to a user acceptance testing server, which is then tested manually by either the team or the customer. Only after the version has been acceptance tested and validated to work properly, can the production version be released. Continuous deployment to production is seen very risky due to the applications playing a major role in running the customers business. %However, continuous deployment to a staging environment is seen as very beneficial. %Therefore the deployment procedure has to be designed to allow testing the software in a user acceptance testing environment, and making it possible to manually trigger the deployment to production.
 
-Both of the case company's products are developed with a branching model, where feature branches are first thoroughly developed and then integrated to the master branch. With continuous delivery the long-lived feature branches should be changed to short-lived and relatively small feature branches to allow exposing new functionality faster to the customers, and receive feedback faster. While the small feature branches might be common for companies with a relatively new software products, companies that have been developing products for a long time might be more devoted to the practice of feature branches. %However, it is still possible to keep the software releasable with long-lived feature branches by hiding new functionality or by constructing it as a series of releasable small changes \cite{cdbook}.
-%If the components are sufficiently small, it is preferable to have a single build for the whole application—giving the fastest feedback of all. \cite{cdbook}
+The basic deployment pipeline in the case company first includes a deploy to a user acceptance testing server, which is then tested manually by either the team or the customer. Only after the version has been acceptance tested and validated to work properly, can the production version be released. Continuous deployment to production is seen very risky due to the applications playing a major role in running the customers business. 
 
-%The benefit of smaller branches is that while there may still be bugs, they're introduced in a fewer number of commits, and entire large features don't have to be rollbacked. Smaller branches also enable faster feedback. 
+Both of the case company's products are developed with a branching model, where feature branches are first thoroughly developed and then integrated to the master branch. With continuous delivery the long-lived feature branches should be changed to short-lived and relatively small feature branches to allow exposing new functionality faster to the customers, and receive feedback faster. While the small feature branches might be common for companies with a relatively new software products, companies that have been developing products for a long time might be more devoted to the practice of long-lived feature branches. %However, it is still possible to 
 
-%Pull requests
-%Triggering
-%
-The software applications in B2B often are large and modular applications, as is the case in the case company. The point when a deployment is triggered has to be designed to maintain the integrity of the application. As the deployment process is currently manually triggered by first releasing a version, a suitable time can be chosen each time. With continuous delivery the deployment process is triggered automatically, and with a modular project each module has to be in the correct state in order to produce a coherent version.
-%\begin{aquote}{Developer}
-%"There are dependencies between projects, and occasionally merges are done without the will to deploy. However, if pull requests are to be deployed when merged, a better picture of this process is needed for the developers."
-%\end{aquote}
-%In the case company, merging a pull request is not a valid trigger of a deployment, since pull requests are project specific and the software products are composed of multiple projects. Some features require changes to multiple projects, and all of the pull requests have to be merged for the feature to work as intended. However, a good CI tool will handle the dependency management \cite{cdbook}.
+The software applications in B2B often are large and modular applications, as is the case in the case company. The point when a deployment is triggered has to be designed to maintain the integrity of the application. As the deployment process is currently manually triggered by first releasing a version, a suitable time can be chosen each time. When a production deployment is triggered in continuous delivery, each module has to be in the correct state in order to produce a coherent version.
 
-%Multiple customer environments
-Both of the case company's products are used by multiple customers, each having their own environments. As the deployments are currently done manually, the customers receiving each deployment can be manually chosen.However, with a continuous delivery process whenever a feature or a new release is ready to be delivered, it can either be deployed to a single customer or to every customer. %Attention has to be paid when configuring the workflow to allow deploying to an arbitrary customer. If only certain customers accept updates on a continuous basis, it has to be possible to prohibit deploying to every customer at once. %This is the case especially in the early stages, where all of the customers projects aren't yet in the state of continuous delivery.
+Both of the case company's products are used by multiple customers, each having their own environments. As the deployments are currently done manually, the customers receiving each deployment can be manually chosen.However, with a continuous delivery process whenever a feature or a new release is ready to be delivered, it can either be deployed to a single customer or to every customer. 
 
 %Versioning
-Multiple customer environments affects versioning of the software product. In the case company, each customer has a unique configuration of the product, with possibly different versions of certain components. According to Jan Bosch, in an Innovation Experiment System environment only a single version exists: the currently deployed one. Other versions are retired and play no role \cite{bosch2012building}. However, with multiple environments, multiple different versions of the software are necessary at least in the early phase. %Eventually the product may be developed in such manner that a single version is sufficient. The build script therefore has to be configured to consider the customer-specific components when compiling the builds for each customer.
-
-%"A final aspect is the avoidance of versioning of software. Traditionally, for many companies, every customer would ultimately have a unique configuration of the product with different versions of components making up the system. This adds a whole new layer of complexity to the already costly process of deploying new versions. In an IES environment, there is only one version: the currently deployed one. All other versions have been retired and play no role." 
+Multiple customer environments affects versioning of the software product. In the case company, each customer has a unique configuration of the product, with possibly different versions of certain components. According to Jan Bosch, in an Innovation Experiment System environment only a single version exists: the currently deployed one. Other versions are retired and play no role \cite{bosch2012building}. However, with multiple environments, multiple different versions of the software are necessary at least in the early phase. 
 
 %Developer responsibility 
 Continuous delivery also drifts response towards the developer, and the developers decide what is ready to be released. Currently in the case company the product owners and team leaders are responsible for negotiating the deployment date with the customer, and they also inform the developers that a new version is required. If the developer can single-handedly deploy a feature, the management can quickly lose track on the features available to customers. This also requires the developers to deeply understand the details of the version control system and automated testing. 
 
-Due to increased developer responsibility and varying interval of version updates continuous delivery causes, a team leader expresses concern that the delivery process complicates tracking when deployments are performed, and when features are finished. This also concerns other parties working in the customer interface, such as sales. %While this is a concern for version deployments to the UAT environment, especially if developers perform these deployments at will, can production releases still be negotiated with the customer. Neely and Stolt have also found similar results \cite{neely2013continuous}, which they solved by providing mechanisms by which the parties if need of knowledge regarding release times could track the work in real time.  
-
-%Neely and Stolt found out that with a continuous flow, Sales and Marketing departments lost the track of when features are released \cite{neely2013continuous}. Continuous delivery requires the company as a whole to understand the continuous flow process. Neely and Stolt solved this challenge by providing mechanisms by which the parties in need of knowledge regarding release times could track the work in real time \cite{neely2013continuous}. 
-
-
-%-should the product be always deployed to every customer?
-
-%jos pull requestit haluttaisiin deployata automaattisesti, eivät pullrequestit ole aina täysin toimivia sellaisenaan. riippuvuuksia niidän välissä, ja toisinaan mergetään ilman että halutaan deployauksia. nykyään tämä tieto liikkuu kehittäjien päässä. pitäisi saada tarkempi kuva jos pullrequestin triggeröinti aiheuttaisi deployauksen. yksi haaste on se että asiakkaita ja ympäristöjä on paljon. miten määritetään mille asiakkaalle deployataan? ei ole järkeä viedä asiakkaille jotka eivät ole sitä toivoneet. täysin automaattisesti vaikea tehdä, ja ihmisen pitäisi päättää mihin versio deployataan. muutokset saattavat vaatia muiden komponenttien päivityksen, tietokanta jne. niiden koordinointi voi olla haaste. myös jos CDM on integroitu muiden asiakkaiden tuotteisiin saattaa rajapinta vaihtua. siirto voi olla haaste, sillä ympäristöt ovat asiakkaiden hallussa. yhteyden saaminen esim. windows-koneille vaatii VPN:n, eikä se ole aina yksinkertaista. esimerkiksi VPN:n käyttäjälimitit asiakkaille voivat olla täynnä.
-
-%CD costs http://www.continuousagile.com/unblock/cd_costs_benefits.html
-
-%Costs
-
-%-developer training: social commitment and understaind of the version control system
-%Continuous delivery also involves developer training costs. Developers need to understand the details of their version control system. They need a full social commitment to automated testing. They must take more responsibility for delivering release-ready code and features.
-
-%-understanding how major changes can be inserted and hidden unless they're ready
-%Incremental releases are complicated. Developers must figure out how to insert major changes invisibly, and hide them with switches until they are ready to be released. This staged migration adds some complexity that is not present if you just rip out the old stuff and then test the new stuff. However, you will gain confidence by seeing changes working in production systems before you "unveil" them to your users. This can more than compensate for the increased complexity
-%It is faster. You unblock your team so that developers can work at full speed. They don't have to wait for a product manager, product owner, or marketing person to tell them that users, marketing and documentation are ready for a release. Instead, they release everything that is ready, and hide it from the general public. The PM or marketing person can come along later, see that the new feature works, and start the "unveil" process.
-%It provides the correct incentives. The developer is responsible for the release, because he or she is the one who can fix it. A developer can be called back from Friday night beers to fix a problem. Therefore, developers have a compelling reason to make a good decision about what to release. They should not throw buggy code over the all to a QA person. They need to be forced to focus on quality by removing the QA training wheels. They will be motivated to build good tests, and good scripts for testing and deployment.
-
-%Developer responsibility
-%Developers gain a lot of power and a lot of responsibility from continuous delivery.
-%Developers (programmers) will decide what is ready to release. This is a strong finding. We see it in all successful continuous delivery organizations. The developer of a feature decides when it is ready, and runs the scripts to put it into the production version.
-
-%http://www.slideshare.net/wakaleo/continuous-deliverywithmaven CD with maven
-
-%http://blogs.atlassian.com/2014/07/skeptics-guide-continuous-delivery-part-3-real-world-pipelines/ Pipeline
-
-%en näe että sitä saataisiin ikinä toimimaan nykyisellä kokoonpanolla. cdm koostuu niin monesta projektista, että käytännössä en tiedä miten voisimme automatisoida se. riippuen mihin projektiin on tuulut muutoksia, pitää ne releaseta ja laittaa cdm:n pääprojektiin joka ottaa muuttuneet releaset mukaan. release-numerot vaihtelee per aliprojekti, voi olla joko pieni- tai iso releasemuutos ja sen mukaan kasvatetaan releasenumeroa. jos olisi vain yksi projekti niin voitaisiin se automatisoida. yhden projektin tekemisessä ei sinäänsä ole haasteita. monen projektin idea on tällä hetkellä aika huono, sillä kun buildaamme cdm:n, buildaamme aina pääprojektin. yksikään aliprojektia ei buildata koskaan, pl. käyttöliittymä. hyöty siitä että ne on itsenäisiä projekteja on aika nolla. nyt kaikissa aliprojekteissa omat versionumerot, joka on aika huono ratkaisu. jos kaikki aliprojektit olisi kiinnitetty samaan versionumeroon koko CDM:llä, voitaisiin vain päättää että nyt ollaan tehty tällaiset muutokset CDM:ään. mietitään että meillä on githubissa kamat, jos haluttaisiin autodeployaa tuotantoversio asiakkaille, saataisiinko esimerkiksi pääsy kaikkiin asiaksympäristöihin että voisimme automaattisesti siirtää eri releasen? voisiko kantamigraatiot automatisoitua? mitä jos tuotantodataa pitäisi päivittää, saataisiinko sitä päivitettyä, tuskin. 
-
-%UAT
+Due to increased developer responsibility and varying interval of version updates continuous delivery causes, a team leader expresses concern that the delivery process complicates tracking when deployments are performed, and when features are finished. This also concerns other parties working in the customer interface, such as sales. 
 
 \subsection{Customer challenges}
 The customer challenges are analyzed based on two sections of the interview: customer interaction and the deployment process.
@@ -321,66 +176,23 @@ The customer challenges are analyzed based on two sections of the interview: cus
     \caption{Customer challenges in continuous delivery.}
     \end{table}
 
-%Customers have been trained to use a certain version of the product
 Some customers of the case company are reluctant towards new releases. One of the reasons for this reluctancy is that new releases occasionally contain new bugs. In the case company, customers have been trained to perform certain tasks with a certain user interface. The customer might perform these tasks daily, once every two weeks or even less frequently. If the UI changes often, the customers feel lost and initially take more time to perform the tasks. This causes frustration in the users, and visible changes generally increases the reluctancy customers have towards new versions, unless the changes are significantly improving the user experience.  
 \begin{aquote}{Product owner}
 "The user interface should be easy to use. Now it's relatively hard to learn. If customers have just learned to perform a task, and we change the UI, the feedback is terrible."
 \end{aquote}
 
-%Customer reluctancy towards new versions
-%While user experience could be improved in the long run, customers might feel frustrated when they have to learn to work with modifications. If modifications were made more often, it leads to smaller and less notable modifications which might reduce the customer reluctancy towards new versions. Especially UI changes cause frustration.
-%\begin{aquote}{Product owner}
-%"If something changes, communication with the customer is hard. Even if the customers felt that the version included very good changes, if something visible changes it gets alot of negative feedback".
-%\end{aquote}
+Listing the changed features in changelog entries is especially important when releases are made more often. While the changes become smaller the faster versions are released, customers become less aware of when the version will be updated and when features have changed. Currently the version deployments are negotiated with the customers, and when the deployments are made more often, discussions regarding version releases may be reduced or even ceased.
 
-%The customers are unaware of the problems related to deployment issues unless the deployment has errors. However, if the version contains many UI changes the customer might feel frustrated by being unable to perform certain actions in the old way: 
-%\begin{aquote}{Dialog product owner}
-%"Customers have been doing this for their living - they're getting old, they have their own working histories and they're in the working mode. These persons don't approve alterations in the software, and they're not ready for the constant changes."
-%\end{aquote}
-
-Listing the changed features in changelog entries is especially important when releases are made more often. While the changes become smaller the faster versions are released, customers become less aware of when the version will be updated and when features have changed. Currently the version deployments are negotiated with the customers, and when the deployments are made more often, discussions regarding version releases may be reduced or even ceased.%Currently the version deployments are negotiated with the customers, and necessary actions are taken to explain the changed features to the customers in meetings or in e-mails. These actions can include changelogs, but also training sessions or meetings.   
-
-%Pilot customer
-A way to identify the best practices in continuous delivery is to develop the continuous delivery process with a pilot customer. Pilot customer is a company willing to help the company to quickly learn what works and what needs to be improved. The interviewees expressed a desire to first test the continuous delivery process with a single customer that is willing to receive updates in a continuous manner, since the engagement model inevitably differs from the current model.% Therefore the company can train customer interaction with continuous delivery, find the actual reasons for version reluctancy, see how the change in deployment process affects customer interaction and even test if the UAT environment is necessary.
+A way to identify the best practices in continuous delivery is to develop the continuous delivery process with a pilot customer. Pilot customer is a company willing to help the company to quickly learn what works and what needs to be improved. The interviewees expressed a desire to first test the continuous delivery process with a single customer that is willing to receive updates in a continuous manner, since the engagement model inevitably differs from the current model.
 
 The acceptance testing is performed in varying ways. Some customers require to perform manual acceptance testing before the product can be deployed into production. Other customers trust the developers to perform the acceptance testing. The technical implementation therefore should make it possible to continuously deploy versions to the user acceptance testing environment, and by the push of a button to the production environment. However, if the versions are deployed to user acceptance testing environment very often, customers might feel encumbered by the amount of required testing. The customers also have to be informed whenever a new version is available to the user acceptance testing environment. Customers might be using the software when a new version is deployed, and the deployment process shouldn't interfere with ongoing usage.
 
-%Deployment time and downtime
-%A customer might be doing a critical task
- %The production deployment date should be negotiated with the customer. %Therefore the most viable solution is to initially deploy the versions to the UAT environment. To prevent downtime and obstructing the usage of the software, the production deployment date should be negotiated with the customer. Production deployment might cause downtime, and cannot be made during times when critical tasks are performed. The test environments can be continuously updated, and once the customer is satisfied with the software and feels a need for a new version, deployment to production can be triggered.  
-
-%In the case company, the production deployment date is often negotiated with and specified by the customer, while the product can be deployed to UAT at will. UAT is also used by the customer to validate the functionality of the software, since the customer has ordered the product to perform certain tasks and fill certain criterias. However, the customers don't validate the versions at the UAT environment unless they are informed that new versions are available, since the UAT is not used for any other purpose than testing.
-
-\subsection{Benefits to the case company}
+\subsection{Benefits of continuous delivery}
 A major problem found in the interviews is that currently the reliability towards new versions is low. The low reliability both increases customers reluctancy towards version updates, and increases the amount of user acceptance testing that is performed after version release. Versions are occasionally forgotten from the UAT phase due to the lack of comprehensive automated testing and the broad scale of features in both software products. These features can then remain broken or contain bugs when the users start using the new version. This is fundamentally caused by the lack of quality assurance before the release. Adopting a test automation solves this issue, as long as tests are written for every feature.
 
-The case company has had problems with the human error factors in manual build processes. Essentially, every each deployment is a new error-prone experiment. This increases the duration required for deploying, and lessens both the reliability and confidence in builds. The human error factor is increased by lacking documentation and parts of the deployment being memorized by developers. With continuous delivery, only a handful of developers might have knowledge of the entire build deployment configuration, but everyone are able to trigger the deployment process. 
+The case company has had problems with the human error factors in manual build processes. Essentially, every each deployment is a new error-prone experiment. This increases the duration required for deploying, and lessens both the reliability and confidence in builds. The human error factor is increased by lacking documentation and parts of the deployment being memorized by developers. With continuous delivery, only a handful of developers might have knowledge of the entire build deployment configuration, but everyone is able to trigger the deployment process. 
 
-The management considers improving the deployment process to be one of the most important improvements. According to the findings, continuous delivery mainly increases the speed, quality, and capacity of the development. Speed and capacity are ensured by automated deployment, while quality is increased by the automated testing and faster feedback. Smaller problems can be quickly fixed without spending unnecessary time on manually deploying a new version to the customer, and bigger changes only take as long as the implementation requires. After the initial investion, the practice will eventually allow the company to spend less money on management and operations, because unnecessary repetitive work and bugs caused by manual building can be eliminated. %D
-
-
-
-%Automating the deployment also reduces the time required for deploying a version. The product owners state that building and deploying a version can take up to a day, which is seen as way too long. The primary reason taking up the time is caused by having to manually compile, test and bugfix the versions. With continuous delivery, the amount of manual work can be diminished to couple of button clicks defining which customer profile to deploy. %Continuous delivery therefore allows the release of changes in time spans of hours, also allowing the most important features and fixes to be delivered faster. With faster problem fixing due to increases in bug discover and fixing rate, the software eventually ends up with fewer bugs. %The primary reason for
-
-%Duration
-%Along with the deployment, environment installations take relatively long with manual installation of each component. With continuous delivery, starting the application in a new environment is ideally just generating configuration information describing the environment's unique properties, and starting the automated deployment process to both prepare the new environment and to deploy the correct version \cite{cdbook}. This allows for much more flexibility of deployments, where versions can be deployed when it is convenient to do so.
-
-%-Downtime can be eliminated %Canary release
-%The prolonged deployment time also causes more downtime. Downtime is not currently perceived as an issue in itself, as it is negotiated with the customer and happens during the hours where downtime is acceptable. With continuous delivery, the company gains more incentive to reduce or eliminate downtime. In the case of CDM, downtime can be eliminated by utilizing for example parallel environments or canary releases \cite{cdbook}. With canary releases, a new version is rolled to a subset of the production server, and a part of the users are routed to the new version. If the new version is then deemed to work as intended, all of the users are routed to the new version.
-
-%issues tracking status
-%One of the issues is that customers are having problems tracking the status of the development process in projects. This is caused by not deploying features that are not complete, and the relatively long length of the software delivery cycles. The customer is better kept on track of the development with continuous delivery, as the process is more transparent. In projects with a set duration it is much easier for the customer to understand the status of features when they are deployed in constant intervals.
-
-%As the customer is constantly updated with newer versions, in projects with a set duration i
-
-%Ongelma: uuden ympäristön asennus kestää erittäin kauan (useita työpäiviä)
-%It should be a simple task to start your application in a new environment—ideally
-%just a matter of commissioning the machines or virtual images and creating some
-%configuration information that describes the environment’s unique properties.
-%Then you should be able to use your automated deployment process to prepare
-%the new environment for deployment and deploy the chosen version of your
-%application to it. \cite{cdbook}
-
+The management considers improving the deployment process to be one of the most important improvements. According to the findings, continuous delivery mainly increases the speed, quality, and capacity of the development. Speed and capacity are ensured by automated deployment, while quality is increased by the automated testing and faster feedback. Smaller problems can be quickly fixed without spending unnecessary time on manually deploying a new version to the customer, and bigger changes only take as long as the implementation requires. After the initial investment, the practice will eventually allow the company to spend less money on management and operations, because unnecessary repetitive work and bugs caused by manual building can be eliminated. %D
 
 \section{Discussion}
 The results suggest that the challenges faced in continuous delivery in the B2B context are multidimensional, and related to the technical, procedural and customer aspects. The major difference a company operating in the B2B domain faces in the transition as compared to the B2C domain is that there are plenty of customers with unique properties, whose business relies on the software. The primary issues causing these challenges are the diverse customer owned environments and the importance of the software product for the customer. 
@@ -395,15 +207,10 @@ The results suggest that the challenges faced in continuous delivery in the B2B 
 
 Fig. \ref{fig1} visualizes the challenges the case company faces in transition towards continuous delivery. Multiple challenges are related to two or more aspects, and the problems affecting all aspects can be seen as the core challenges. Acceptance testing is related to all aspects, since customers want to perform acceptance testing with new versions, automated acceptance testing has to be implemented and the user acceptance testing is required before a production release can be made. Another challenge related to all aspects is the diversity of customer environments. It affects the technical implementation, as software has to be transferred to diverse environments. The procedural challenge is that the software has to be deployed to multiple customers, and it has to be decided whether each version is always released to every customer. 
 
-The issues into which the benefits are mapped were found by researching the current deployment process and challenges faced in the development process. An unexpectedly large part of the major issues stated by the interviewees are related to deploying the software, and it was identified as one of the major challenges in the current product development. The benefits found from continuous delivery, which were sought from existing literature \cite{cdbook, neely2013continuous, humble2006deployment}, matched the challenges surprisingly well. %By taking the time to map the actual encountered problems to solutions, the concept of continuous delivery can be better sold to the management of companies.
+The issues into which the benefits are mapped were found by researching the current deployment process and challenges faced in the development process. An unexpectedly large part of the major issues stated by the interviewees are related to deploying the software, and it was identified as one of the major challenges in the current product development. The benefits found from continuous delivery, which were sought from existing literature \cite{cdbook, neely2013continuous, humble2006deployment}, matched the challenges very well. 
 
 The study also suggests that continuous delivery corresponds to many of the case company's primary needs. The issues related to the deployment process are considered very important by both of the teams. The issues include low reliability of new versions, human error factors when performing version releases and deployments, and long feedback cycles. Additionally, a very large part of the case company's resources are spent on both deploying and testing new versions. One of the main benefits of continuous delivery is that the software is kept in a state where it is always ready for deployment \cite{cdbook}, and that no manual work from the company is required to produce a new version. 
 
-%To theory
-%To practice
-
-
-%to theory
 The findings are in align with and could be considered as extending some of the theoretical contributions by Olsson et al. \cite{olsson2012climbing}, who researched the transition towards continuous delivery. Identifying that transitioning towards continuous delivery requires a company to address issues in multiple aspects of the company also benefits companies in practice.   
 
 \subsection{Limitations}
@@ -412,40 +219,33 @@ Since case studies only allow analytic generalisations instead of statistical ge
 Two types of triangulation were used: data triangulation by including persons with different roles into the interviews, and methodological triangulation by collecting documentary data and observations by the author. However, the reliability of the results could have been increased by employing observer triangulation and theory triangulation. 
 
 \section{Summary}
-This study was motivated due to lack of studies in continuous delivery focusing in companies operating in the B2B environment. Understanding the central aspects of continuous delivery will be a must for software companies willing to stay ahead of its competitors in the current rapidly moving industry. The findings provide insights into the challenges a company faces in the transition in this domain, and the benefits a company can gain from adopting this practice.
+This study was motivated due to lack of studies in continuous delivery focusing on companies operating in the B2B environment. Understanding the central aspects of continuous delivery will be a must for software companies willing to stay ahead of its competitors in the current rapidly moving industry. The findings provide insights into the challenges a company faces in the transition in this domain, and the benefits a company can gain from adopting this practice.
 
 This study has identified the main requirements a company operating in the B2B domain has to address when applying continuous delivery. The challenges can be divided into technical challenges, procedural challenges and challenges related to the customer. These challenges are mostly caused by having multiple customers with diverse environments and unique properties, whose business depends on the software product. While continuously deploying versions to a user acceptance testing environment requires a company to address multiple challenges, continuously deploying to production is even more difficult, since some customers want to perform manual acceptance testing before production releases can be made. 
 
-%The second research question answer
 The benefits of continuous delivery matched to many business problems found in the case company, and a company operating in similar domain with similar products can use them as a basis when considering applying this practice. By utilizing continuous delivery, the case company can solve problems such as long feedback cycles, low reliability in new versions, human error factors and high amount of resources required for deploying and testing new releases. 
 
-%The scope was limited to the development process of two software products within the case company, and direct generalisations to other domains and products should be avoided. However, the findings of this study are in% align with and could be considered as extending some of the theoretical contributions by Olsson et al. \cite{olsson2012climbing}, who researched the transition from agile development towards an experimental system. 
-
-%While the data collection was applied to the teams developing the software products, the upper management of the company were not interviewed. The variety of responses in other teams was not explored, or the multitude of% other different possible contexts in software development in the B2B domain. The responses from the interviewees mostly differentiated only based on the software product being developed, and the teams were quite similar %in terms of composition and experience.
-%\subsection{Future research}
-%The individual aspects where challenges were found could be more deeply analyzed for both continuous delivery and continuous experimentation. Also, grouping the challenges into different groupings can yield interesting results. In the case of continuous experimentation, researching dependencies between problems in different groups could yield interesting results by providing a detailed view on the core challenges.
-
-%An interesting research question for further research is also how the core findings of the study can be transferred to other companies working in the B2B domain with different software products. This includes investigating deviations found in the challenges and benefits presented in this study. The %challenges found in the transition phases also have to be validated by adopting the respective development model in practice. 
+\section{Acknowledgements}
+We wish to thank the participants of the study for their time and contributions and the reviewers for their valuable comments. We also thank the Finnish technology agency, Tekes, for funding the Cloud Software Factory project, and the Need for Speed program, under which the proposed study was undertaken. This paper is based on thesis work \cite{gradu} completed at the University of Helsinki.
 
 %
 % ---- Bibliography ----
 %
 \begin{thebibliography}{5}
 
-\bibitem{olsson2012climbing} Olsson, H. H., Alahyari, H., \& Bosch, J. (2012, September). Climbing the" Stairway to Heaven"--A Mulitiple-Case Study Exploring Barriers in the Transition from Agile Development towards Continuous Deployment of Software. In Software Engineering and Advanced Applications (SEAA), 2012 38th EUROMICRO Conference on (pp. 392-399). IEEE.
+\bibitem{olsson2012climbing} Olsson, H. H., Alahyari, H., \& Bosch, J. (2012, September). Climbing the" Stairway to Heaven"--A Multiple-Case Study Exploring Barriers in the Transition from Agile Development towards Continuous Deployment of Software. In Software Engineering and Advanced Applications (SEAA), 2012 38th EUROMICRO Conference on (pp. 392-399). IEEE.
 \bibitem{neely2013continuous} Neely, S., \& Stolt, S. (2013, August). Continuous Delivery? Easy! Just Change Everything (well, maybe it is not that easy). In Agile Conference (AGILE), 2013 (pp. 121-128). IEEE. 
 \bibitem{bosch2012building} Bosch, J. (2012). Building products as innovation experiment systems. In Software Business (pp. 27-39). Springer Berlin Heidelberg.
-\bibitem{kohavi2007building} Kohavi, R., Henne, R. M., \& Sommerfield, D. (2007, August). Practical guide to controlled experiments on the web: listen to your customers not to the hippo. In Proceedings of the 13th ACM SIGKDD international conference on Knowledge discovery and data mining (pp. 959-967). ACM.
-\bibitem{eklund2012architecture} Eklund, U., \& Bosch, J. (2012, August). Architecture for large-scale innovation experiment systems. In Software Architecture (WICSA) and European Conference on Software Architecture (ECSA), 2012 Joint Working IEEE/IFIP Conference on (pp. 244-248). IEEE.
 \bibitem{cdbook} Humble, J., \& Farley, D. (2010). Continuous delivery: reliable software releases through build, test, and deployment automation. Pearson Education.
 \bibitem{humble2006deployment} Humble, J., Read, C., \& North, D. (2006, July). The deployment production line. In Agile Conference, 2006 (pp. 6-pp). IEEE.
+\bibitem{fowler} Fowler, M., ContinuousDelivery, http://martinfowler.com/bliki/Continuous \newline Delivery.html (2015, January)
 \bibitem{king1998template} King, N. (1998) Template analysis. In Qualitative methods and analysis in organizational research: A practical guide (pp. 118-134). Sage Publications Ltd.
 \bibitem{runeson2009guidelines} Runeson, P., \& Höst, M. (2009). Guidelines for conducting and reporting case study research in software engineering. Empirical software engineering, 14(2), 131-164.
 \bibitem{dzamashvili2010impact} Dzamashvili Fogelström, N., Gorschek, T., Svahnberg, M., \& Olsson, P. (2010). The impact of agile principles on market‐driven software product development. Journal of Software Maintenance and Evolution: Research and Practice, 22(1), 53-80.
 \bibitem{cockburn2002agile} Cockburn, A. (2000). Agile software development. Cockburn* Highsmith Series Editor.
 \bibitem{loshin2010master} Loshin, D. (2010). Master data management. Morgan Kaufmann.
 \bibitem{duvall2007continuous} Duvall, P. M., Matyas, S., \& Glover, A. (2007). Continuous integration: improving software quality and reducing risk. Pearson Education.
-\bibitem{kohavi2007practical} Kohavi, R., Henne, R. M., \& Sommerfield, D. (2007, August). Practical guide to controlled experiments on the web: listen to your customers not to the hippo. In Proceedings of the 13th ACM SIGKDD international conference on Knowledge discovery and data mining (pp. 959-967). ACM.
+\bibitem{gradu} Rissanen, O., M{\"u}nch, J. (supervisor), M{\"a}nnist{\"o}, T. (supervisor). Extending the Development Process Towards Continuous Delivery and Continuous Experimentation in the B2B Domain: A Case Study. Master's Thesis. University of Helsinki (2015)
 
 \end{thebibliography}
 %
